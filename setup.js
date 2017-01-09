@@ -36,7 +36,8 @@ co(function *_() {
             char_filter: ["html_strip"],
           },
           autocomplete_search: {
-            tokenizer: 'lowercase',
+            tokenizer: 'whitespace',
+            filter: ['lowercase']
           },
         },
         tokenizer: {
@@ -56,16 +57,16 @@ co(function *_() {
     type,
     body: {
       accounts: {
-        _all: {
-          analyzer: 'autocomplete',
-          search_analyzer: 'autocomplete_search',
-        },
         properties: {
           firstname: {
             type: 'string',
+            analyzer: 'autocomplete',
+            search_analyzer: 'autocomplete_search',
           },
           lastname: {
             type: 'string',
+            analyzer: 'autocomplete',
+            search_analyzer: 'autocomplete_search',
           }
         }
       },
